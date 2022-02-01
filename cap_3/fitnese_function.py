@@ -58,11 +58,11 @@ def TestableHtml(pageData: PageData, includeSuiteSetup: bool):
         return pageData.getHtml()
 
 
-# there is a function which does the same thing as the function above, but it is refactored
+# There is a function which does the same thing as the function above, but it is refactored
 def RenderPageWithSetupsAndTeardowns(pageData: PageData, isSuite: bool):
     try:
         return
-    except
+    except:
         isTestPage: bool
         isTestPage = pageData.hasAttribute("Test")
 
@@ -74,5 +74,16 @@ def RenderPageWithSetupsAndTeardowns(pageData: PageData, isSuite: bool):
             newPageContent.append(pageData.getContent())
             incluideTeardownPages(testPage, newPageContent, isSuite)
             pageData.setContent(newPageContent.toString())
+
+        return pageData.getHtml()
+
+# There is the reformed function as the function above
+
+def ReformedRenderPageWithSetupsAndTeardowns(pageData: PageData, isSuite: bool):
+    try:
+        return
+    except:
+        if isTestPage(PageData):
+            includesSetupAndTeardownPages(pageData, isSuite)
 
         return pageData.getHtml()
